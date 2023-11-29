@@ -1,0 +1,43 @@
+function R = RotMatrix(alpha, u, v)
+if numel(alpha) ~= 1
+   error('JSimon:RotMatrrix:BadInput1', ...
+      'Angle of rotation must be a scalar.');
+end
+s = sin(alpha);
+c = cos(alpha);
+switch nargin
+   case 1
+      R = [c, -s;  s, c];
+   case 2
+      if numel(u) ~= 3
+         error('JSimon:RotMatrrix:BadAxis2D', ...
+            '3D: Rotation axis must have 3 elements.');
+      end
+      u = u(:);
+      u = u ./ sqrt(u.' * u);
+      x  = u(1);
+      y  = u(2);
+      z  = u(3);
+      mc = 1 - c;
+      R  = [c + x * x * mc,      x * y * mc - z * s,   x * z * mc + y * s; ...
+            x * y * mc + z * s,  c + y * y * mc,       y * z * mc - x * s; ...
+            x * z * mc - y * s,  y * z * mc + x * s,   c + z * z .* mc];         
+   case 3
+      n = numel(u);
+      if n ~= numel(v)
+         error('JSimon:RotMatrrix:BadAxes3D', ...
+            'ND: Axes to define plane of rotation must have the same size.');
+      end
+      u = u(:);
+      u = u ./ sqrt(u.' * u);
+      v = v(:);
+      v = v - (u.' * v) * u;
+      v = v ./ sqrt(v.' * v);
+      R = eye(n) + ...
+         (v * u.' - u * v.') * s + ...
+         (u * u.' + v * v.') * (c - 1);  
+      otherwise
+      error('JSimon:RotMatrrix:BadNInput', ...
+            '1 to 3 inputs required.');
+end
+end

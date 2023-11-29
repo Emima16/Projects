@@ -1,0 +1,10 @@
+function pos=initialization(searchAgents,dim,u,l)
+u_new=u;  
+l_new=l;  
+for i=1:dim  
+    u_i=u_new(i);
+    l_i=l_new(i);
+    pos(:,i)=rand(searchAgents,1).*(u_i-l_i)+l_i;
+end
+end
+

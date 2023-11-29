@@ -1,0 +1,21 @@
+function [costFinal] = Objfun (y)
+wc1=0.3;
+wc2=0.7;
+dir=5.9;
+s11=[-16.21,-16.17,-22.45];
+OF11=sum((((1./dir).^2).*(wc1.^2)+y(1)),'all');
+OF12=sum((((1./(-s11)).^2).*(wc2.^2)+y(2)),'all');
+OF22=sum(wc2.*exp(s11)+y(2));
+OF31=sum(wc1*cos(dir)+y(1));
+OF32=sum(wc2.*cos(s11)+y(2));
+sum1=zeros(1,length(dir));
+for i=1:1:length(dir)
+    j=wc1*exp(-dir(i))+y(1);
+    sum1(i)=j;
+end
+OF21=sum(sum1);
+cost(1)=OF11+OF12;
+cost(2)=OF21+OF22;
+cost(3)=OF31+OF32;
+costFinal=min(cost);
+end

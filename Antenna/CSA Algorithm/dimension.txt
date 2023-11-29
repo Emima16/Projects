@@ -1,0 +1,56 @@
+function [list,dim]=dimension()
+min_h=0.5;
+max_h=6;
+min_gpL=10;
+max_gpL=70;
+min_gpW=10;
+max_gpW=70;
+min_Ux1=1;
+max_Ux1=15;
+min_Ux2=1;
+max_Ux2=20;
+min_Ux3=1;
+max_Ux3=20;
+min_Uy1=1;
+max_Uy1=20;
+min_Uy2=1;
+max_Uy2=20;
+min_Uy3=1;
+max_Uy3=20;
+min_Ud1=1;
+max_Ud1=10;
+min_Ud2=1;
+max_Ud2=10;
+min_Ud3=1;
+max_Ud3=10;
+min_Ua1=0.1;
+max_Ua1=2;
+min_Ua2=0.1;
+max_Ua2=2;
+min_Ua3=0.1;
+max_Ua3=2;
+list=["Substrate Thickness","Ground Plane Length","Ground Plane width",...
+    "1st Patch Length along X axis","2nd Patch Length along X axis","3rd Patch Length along X axis",...
+    "1st Patch Length along Y axis","2nd Patch Length along Y axis","3rd Patch Length along Y axis",...
+    "1st Patch base distance along Y axis", "2nd Patch base distance along Y axis", "3rd Patch base distance along Y axis",...
+    "1st Patch Notch Width along X axis", "2nd Patch Notch Width along X axis", "3rd Patch Notch Width along X axis"];
+for j=1:1:15
+	val1=(max_h - min_h)*rand(1,1) + min_h;
+	val2=(max_gpL - min_gpL)*rand(1,1) + min_gpL;
+	val3=(max_gpW - min_gpW)*rand(1,1) + min_gpW;
+	val4=(max_Ux1 - min_Ux1)*rand(1,1) + min_Ux1;
+	val5=(max_Ux2 - min_Ux2)*rand(1,1) + min_Ux2;
+	val6=(max_Ux3 - min_Ux3)*rand(1,1) + min_Ux3;
+	val7=(max_Uy1 - min_Uy1)*rand(1,1) + min_Uy1;
+	val8=(max_Uy2 - min_Uy2)*rand(1,1) + min_Uy2;
+	val9=(max_Uy3 - min_Uy3)*rand(1,1) + min_Uy3;
+	val10=(max_Ud1 - min_Ud1)*rand(1,1) + min_Ud1;
+	val11=(max_Ud2 - min_Ud2)*rand(1,1) + min_Ud2;
+	val12=(max_Ud3 - min_Ud3)*rand(1,1) + min_Ud3;
+	val13=(max_Ua1 - min_Ua1)*rand(1,1) + min_Ua1;
+	val14=(max_Ua2 - min_Ua2)*rand(1,1) + min_Ua2;
+	val15=(max_Ua3 - min_Ua3)*rand(1,1) + min_Ua3;
+end
+dim=[val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,val12,val13,val14,val15];
+end
+

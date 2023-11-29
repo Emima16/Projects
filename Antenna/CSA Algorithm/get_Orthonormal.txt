@@ -1,0 +1,23 @@
+function answer = get_orthonormal(m,n)
+if ( (nargin==2) && (m>n) && (isnumeric(m)*isnumeric(n)))
+elseif ( nargin==1 && isnumeric(m) && length(m)==1 )
+   n=m;
+else
+   error('Incorrect Inputs. Please read help text in m-file.')
+end
+count=0;
+while (count==0)
+    A=rand(m);
+    B=A'*A;
+    [P,~] = eig(B);
+    if ((P'*P - eye(m))>eps) 
+       count=0;
+    else
+        answer=P(:,1:n) ;
+        count=1;
+    end
+end
+end
+
+
+
