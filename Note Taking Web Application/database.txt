@@ -1,0 +1,15 @@
+SELECT * FROM demo.users;
+
+show create table users;
+
+CREATE TABLE `users` (
+   `UserId` int NOT NULL AUTO_INCREMENT,
+  
+ `Title` varchar(225) DEFAULT NULL,
+ 
+  `Comment` mediumtext,
+   `Trash` int DEFAULT '0',
+ 
+  `Archieve` int DEFAULT '0',
+   PRIMARY KEY (`UserId`)
+ )
